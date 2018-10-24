@@ -14,11 +14,11 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.init.vo.UserInfoVO;
 
 
@@ -37,7 +37,6 @@ public class WebSocketTest {
 
 	    TypeReference<HashMap<String,Object>> typeRef 
 	            = new TypeReference<HashMap<String,Object>>() {};
-
 		Map<String,String> map = mapper.readValue(text, typeRef);
 		log.info("text = >{}",map);
 		String targetId = map.get("target");
@@ -67,7 +66,6 @@ public class WebSocketTest {
 	
 	@OnOpen
 	public void onOpen(Session session, EndpointConfig config) {
-		System.out.println(session);
 		final HttpSession hs = (HttpSession) config.getUserProperties()
                 .get(HttpSession.class.getName());
 		//로그인처리를 했다는 가정하에 로그인을 할경우

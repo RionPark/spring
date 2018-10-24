@@ -1,15 +1,17 @@
 package com.spring.init.vo;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
 public class UserInfoVO {
 
 	private int uiNo;
 	private String uiId;
+	@NotNull
 	private String uiName;
 	private String uiPwd;
 	private String uiHP;
 	private int admin;
+	
 	public int getUiNo() {
 		return uiNo;
 	}
